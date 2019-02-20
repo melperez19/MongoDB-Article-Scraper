@@ -1,0 +1,85 @@
+
+
+body {
+    background-image: url(/assets/images/sand3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* width: 100vw; */
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+.jumbotron {
+    background-image: url(/assets/images/meditation.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 580px;
+    /* width: 100vw; */
+    color: wheat;
+    text-decoration: aqua;
+    text-shadow: black 5px;
+}
+
+h1 {
+    font-size: -webkit-xxx-large;
+    margin-top: 200px;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white;
+}
+
+.nav-tab {
+    margin-top: 7px;
+}
+
+.btn {
+    background-color: lightcoral;
+}
+
+.card {
+    /* width: 97.5%; */
+    margin: 10px;
+    align-content: center;
+}
+
+.card-header {
+    background-color: lightcoral;
+    color: white;
+}
+
+.save-btn {
+    background-color: teal;
+    float: right;
+    margin-top: 0%;
+}
+
+footer {
+    background-image: url(/assets/images/meditation.jpg);
+    height: 50px;
+    margin-left: 15px;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+   
+}
+
+/* a {
+    color: black;
+}
+
+a:hover {
+    color: white;
+} */
+
+.deleteNote {
+	display: inline-block;
+}
+
+.previousNotes {
+    display: inline-block;
+    width: 90%
+}
