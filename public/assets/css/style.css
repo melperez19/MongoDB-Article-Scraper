@@ -1,5 +1,3 @@
-
-
 body {
     background-image: url(/assets/images/sand3.jpg);
     background-repeat: no-repeat;
@@ -24,12 +22,14 @@ body {
 
 h1 {
     font-size: -webkit-xxx-large;
+    text-shadow: black 5px;
     margin-top: 200px;
 }
 
 .nav-link,
 .navbar-brand {
     color: white;
+    
 }
 
 .nav-tab {
@@ -51,7 +51,11 @@ h1 {
     color: white;
 }
 
-.save-btn {
+.card-body {
+    background-color: white;
+}
+
+.save .addNote {
     background-color: teal;
     float: right;
     margin-top: 0%;
@@ -66,14 +70,6 @@ footer {
     font-weight: bolder;
    
 }
-
-/* a {
-    color: black;
-}
-
-a:hover {
-    color: white;
-} */
 
 .deleteNote {
 	display: inline-block;

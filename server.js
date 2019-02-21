@@ -80,9 +80,9 @@ app.get("/saved", function(req, res) {
 // A GET request to scrape the greenmedinfo website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
-  axios.get("http://www.greenmedinfo.com/gmi-blogs", function(html) {
+  axios.get("http://www.greenmedinfo.com/gmi-blogs").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
+    var $ = cheerio.load(response.data);
     // Now, we grab every h2 within an article tag, and do the following:
     $(".views-row").each(function(i, element) {
 
@@ -91,28 +91,29 @@ app.get("/scrape", function(req, res) {
 
       // Add the title and summary of every link, and save them as properties of the result object
       result.title = $(this).children(".views-field-title").text();
+      result.author = $(this).children(".views-field-phpcode-1").text();
       result.summary = $(this).children(".views-field-field-front-page-body-value").text();
-      result.link = $(this).children(".views-field-field-front-page-image-fid").children("a").attr("href");
-
+      result.link = $(this).children(".views-field views-field-title").children("a").attr("href");
+      console.log("link:", link);
+      
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       var newArticle = new Article(result);
 
-      // Now, save that entry to the db
-      newArticle.save(function(error, doc) {
+      // Create a new Article using the `result` object built from scraping
+      newArticle.save(function(err, doc) {
         // Log any errors
-        if (error) {
-          console.log(error);
+        if (err) {
+          console.log(err);
         }
-        // Or log the document
+        // Or log the doc
         else {
-          console.log(doc);
+          // console.log(doc);
         }
       });
 
     });
         res.send("Articles successfully scraped");
-
   });
 });
 
@@ -133,7 +134,7 @@ app.get("/articles", function(req, res) {
 
 // Grab an article by it's ObjectId
 app.get("/articles/:id", function(req, res) {
-  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  // Using the id passed in the id parameter, find the matching query in our db...
   Article.findOne({ "_id": req.params.id })
   // ..and populate all of the notes associated with it
   .populate("note")
@@ -203,7 +204,7 @@ app.post("/notes/save/:id", function(req, res) {
     // Otherwise
     else {
       // Use the article id to find and update it's notes
-      Article.findOneAndUpdate({ "_id": req.params.id }, {$push: { "notes": note } })
+      Article.findOneAndUpdate({ "_id": req.params.id }, {$push: { "Notes": note } })
       // Execute the above query
       .exec(function(error) {
         // Log any errors

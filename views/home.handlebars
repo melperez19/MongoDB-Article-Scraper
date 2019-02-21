@@ -1,4 +1,3 @@
-<!--Homepage-->
 
 <!-- Jumbotron -->
 <div class="jumbotron-fluid text-center ">
@@ -7,21 +6,27 @@
         <h3>Holistic Health Edition</h3>
     </div>
 </div>
+
 <div class="col-md-12">
     {{#if article}}
     {{#each article}}
+    <div class="container">
     <div class="card-header" id="titleinput">
         <h3>{{this.title}}</h3>
     </div>
     <div class="card-body">
         <blockquote class="blockquote mb-0" id="bodyinput">
-            <p> {{this.summary}}</p>
+            <h5>{{this.author}}</h5>
+            <hr>
+            <p> {{this.summary}}</p> <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+             <img src="{{this.image}}"/>
             <a href={{this.link}} target="_blank">{{this.link}}</a>
-            <br><br>
-            <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+            {{!-- <br><br> --}}
         </blockquote>
     </div>
 </div>
+<br>
+
 {{/each}}
 {{else}}
 <div class="card shadow mb-5 bg-black rounded">
@@ -32,5 +37,7 @@
     </div>
 </div>
 </div>
+</div>
 {{/if}}
 </div>
+<footer class="text-center">Article Rights Reserved to GreenMedInfo.com</footer>
