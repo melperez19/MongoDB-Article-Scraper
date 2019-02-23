@@ -16,16 +16,16 @@ Saved articles can be deleted by clicking the "Delete" button.
 [Click here to demo the app!](insert website here) 
 
 ### Technologies Used
-*Node.js
-*Express.js
-*Handlebars.js
-*MongoDB
-*Mongoose
+* Node.js
+* Express.js
+* Handlebars.js
+* MongoDB
+* Mongoose
 
 ### NPM Packages
--express
--express-handlebars
--mongoose
--cheerio
--axios
--morgan
+- express
+- express-handlebars
+- mongoose
+- cheerio
+- axios
+- morgan
