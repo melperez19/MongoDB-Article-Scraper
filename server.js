@@ -93,9 +93,10 @@ app.get("/scrape", function(req, res) {
       result.title = $(this).children(".views-field-title").text();
       result.author = $(this).children(".views-field-phpcode-1").text();
       result.summary = $(this).children(".views-field-field-front-page-body-value").text();
-      // result.link = $(this).children("field-content").children("a").attr("href").prepend("http://www.greenmedinfo.com");           
       var link = $(this).children(".views-field-title").find("a").attr("href");           
-      result.link = link.prependTo("http://www.greenmedinfo.com"); 
+      result.link = "http://www.greenmedinfo.com" + link;
+      console.log('link:', result.link);
+
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       var newArticle = new Article(result);
@@ -108,7 +109,7 @@ app.get("/scrape", function(req, res) {
         }
         // Or log the document
         else {
-          console.log(doc);
+          // console.log(doc);
         }
       });
 
