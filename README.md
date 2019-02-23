@@ -4,7 +4,7 @@
 ### Overview
 An app that scrapes articles from the GreenMedInfo website and lets users save articles and leave comments on the latest news.
 
-![final-screenshot](insert github url for image here)
+![final-screenshot](https://github.com/melperez19/MongoDB-Article-Scraper/blob/master/public/assets/images/article-scraper.JPG)
 
 ### How It Works
 Scrapes articles by clicking the "Scrape Articles" button.
