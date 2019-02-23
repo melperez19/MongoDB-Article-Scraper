@@ -12,15 +12,13 @@
     <div class="container">
         <div class="col-md-12">
             <div class="card-header" id="titleinput">
-                <h3>{{this.title}}</h3>
+               <a href={{this.link}} target="_blank">{{this.title}}</a>
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0" id="bodyinput">
                     <h5>{{this.author}}</h5>
                     <hr>
                     <p> {{this.summary}}</p>
-                    {{!-- <img src="{{this.image}}"/> --}}
-                    <a href={{this.link}} target="_blank">{{this.link}}</a>
                     <br><br>
                     <button type="button" class="btn btn-success addNote" data-toggle="modal"
                         data-target="#noteModal{{this._id}}" data-id={{this._id}}>Add a Note</button>

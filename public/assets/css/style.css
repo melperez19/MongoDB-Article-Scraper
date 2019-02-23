@@ -17,12 +17,12 @@ body {
     /* width: 100vw; */
     color: wheat;
     text-decoration: aqua;
-    text-shadow: black 5px;
+    text-shadow: 4px 4px 6px black;;
 }
 
 h1 {
     font-size: -webkit-xxx-large;
-    text-shadow: black 5px;
+    text-shadow: 4px 4px 6px black;;
     margin-top: 200px;
 }
 
@@ -33,7 +33,19 @@ h1 {
 }
 
 .nav-tab {
-    margin-top: 7px;
+    font-size: unset;
+    margin-top: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: solid;
+    font-size: x-large;
+}
+
+a:hover {
+    color: teal;
+    text-decoration: underline;
 }
 
 .btn {
@@ -78,4 +90,16 @@ footer {
 .previousNotes {
     display: inline-block;
     width: 90%
+}
+
+.modal-header, .modal-footer {
+    background-image: url(/assets/images/sand3.jpg);
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-body {
+    background-color: lightcoral;
 }

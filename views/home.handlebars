@@ -1,4 +1,3 @@
-
 <!-- Jumbotron -->
 <div class="jumbotron-fluid text-center ">
     <div class="jumbotron text-center shadow-lg p-3 mb-5 bg-white rounded">
@@ -11,31 +10,33 @@
     {{#if article}}
     {{#each article}}
     <div class="container">
-    <div class="card-header" id="titleinput">
-        <h3>{{this.title}}</h3>
-    </div>
-    <div class="card-body">
-        <blockquote class="blockquote mb-0" id="bodyinput">
-            <h5>{{this.author}}</h5>
-            <hr>
-            <p> {{this.summary}}</p> <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
-             <img src="{{this.image}}"/>
-            <a href={{this.link}} target="_blank">{{this.link}}</a>
-            {{!-- <br><br> --}}
-        </blockquote>
-    </div>
-</div>
-<br>
+        <div class="card-header" id="titleinput">
+            <a href={{this.link}} target="_blank" rel="noopener noreferrer">{{this.title}}</a>
+            
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0" id="bodyinput">
+                <h5>{{this.author}}</h5>
+                <hr>
+                <p> {{this.summary}}</p> <button type="button" class="btn btn-success save" data-id={{this._id}}>Save
+                    Article</button>
+                <img src="{{this.image}}" />
 
-{{/each}}
-{{else}}
-<div class="card shadow mb-5 bg-black rounded">
-    <div class="card-header" id="titleinput">
-        <blockquote class="blockquote mb-0">
-            <h4 class="text-center">Oops...Need to scrape some articles first!</h4>
-        </blockquote>
+                {{!-- <br><br> --}}
+            </blockquote>
+        </div>
     </div>
-</div>
+    <br>
+
+    {{/each}}
+    {{else}}
+    <div class="card shadow mb-5 bg-black rounded">
+        <div class="card-header" id="titleinput">
+            <blockquote class="blockquote mb-0">
+                <h4 class="text-center">Oops...Need to scrape some articles first!</h4>
+            </blockquote>
+        </div>
+    </div>
 </div>
 </div>
 {{/if}}

@@ -83,7 +83,7 @@ app.get("/scrape", function(req, res) {
   axios.get("http://www.greenmedinfo.com/gmi-blogs").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-    // Now, we grab every h2 within an article tag, and do the following:
+    // Now, we grab each selector within the views-row tag, and do the following:
     $(".views-row").each(function(i, element) {
 
       // Save an empty result object
@@ -93,9 +93,9 @@ app.get("/scrape", function(req, res) {
       result.title = $(this).children(".views-field-title").text();
       result.author = $(this).children(".views-field-phpcode-1").text();
       result.summary = $(this).children(".views-field-field-front-page-body-value").text();
-      result.link = $(this).children(".views-field views-field-title").children("a").attr("href");
-      console.log("link:", link);
-      
+      // result.link = $(this).children("field-content").children("a").attr("href").prepend("http://www.greenmedinfo.com");           
+      var link = $(this).children(".views-field-title").find("a").attr("href");           
+      result.link = link.prependTo("http://www.greenmedinfo.com"); 
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       var newArticle = new Article(result);
@@ -106,9 +106,9 @@ app.get("/scrape", function(req, res) {
         if (err) {
           console.log(err);
         }
-        // Or log the doc
+        // Or log the document
         else {
-          // console.log(doc);
+          console.log(doc);
         }
       });
 
@@ -138,7 +138,7 @@ app.get("/articles/:id", function(req, res) {
   Article.findOne({ "_id": req.params.id })
   // ..and populate all of the notes associated with it
   .populate("note")
-  // now, execute our query
+  // now, execute our function
   .exec(function(error, doc) {
     // Log any errors
     if (error) {
@@ -204,7 +204,7 @@ app.post("/notes/save/:id", function(req, res) {
     // Otherwise
     else {
       // Use the article id to find and update it's notes
-      Article.findOneAndUpdate({ "_id": req.params.id }, {$push: { "Notes": note } })
+      Article.findOneAndUpdate({ "_id": req.params.id }, {$push: { "notes": note } })
       // Execute the above query
       .exec(function(error) {
         // Log any errors

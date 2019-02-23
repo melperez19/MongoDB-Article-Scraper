@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
 
     //Handle Save Note button
-    $(".saveNote").on("click", function () {
+    $(".addNote").on("click", function () {
         var thisId = $(this).attr("data-id");
         if (!$("#noteText" + thisId).val()) {
             alert("please enter a note to save")
